@@ -1,4 +1,6 @@
-
+=begin
+solution to this codewars kata: https://www.codewars.com/kata/weight-for-weight/train/ruby
+=end
 #function for converting character to integer array
 def charToInt (strng)
 
@@ -142,8 +144,4 @@ end
 	puts sorted
 
 #end of main
-
-
-
-
 
