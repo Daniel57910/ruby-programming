@@ -2,6 +2,8 @@
 solution to this codewars kata: https://www.codewars.com/kata/weight-for-weight/train/ruby
 =end
 #function for converting character to integer array
+
+#function for converting character to integer array for analysis
 def charToInt (strng)
 
 	weightArr = Array.new
@@ -14,6 +16,7 @@ def charToInt (strng)
 
 end
 
+#function for converting array of integers into string for user
 def intToChar (strng)
 
 	charArr = Array.new
@@ -25,9 +28,7 @@ def intToChar (strng)
 
 	return charArr
 
-
 end
-
 
 #function for sum of numbers eg 231 = 6
 def sumOfNums (weightArr)
@@ -53,21 +54,6 @@ def sumOfNums (weightArr)
 
 end
 
-
-def checkifEqual (num)
-
-	while num > 0
-		ret = num % 10
-		num/=10
-		#puts "ret is #{ret}. num is #{num}"
-	end
-
-	#puts "returned is #{ret}"
-		
-	return ret
-
-end
-
 #function for sorting numbers eg a[8] a[23] -> a[23] a[8]
 def sortTheNums(intArr, weightArr)
 
@@ -89,16 +75,15 @@ def sortTheNums(intArr, weightArr)
 			end
 
 			if intArr[i] == intArr[i + 1] 
-				#puts "#{intArr[i]} is #{intArr[i + 1]} and #{weightArr[i]} = #{weightArr[i + 1]}"
-				check1 = checkifEqual(weightArr[i])
-				check2 = checkifEqual(weightArr[i + 1])
-				#puts "#{check1} #{check2}"
-				if check1 > check2
+				res = (weightArr[i].to_s <=> weightArr[i + 1].to_s)
+				#compares strings in lexicographic order. 
+				#puts "#{weightArr[i]} and #{weightArr[i + 1]}"
+				if res == 1
+				#if 2nd number lexicographic val < 1st swap
 					intArr[i], intArr[i + 1] = intArr[i + 1], intArr[i]
 					weightArr[i], weightArr[i + 1] = weightArr[i+1], weightArr[i]
 					swapped = true
 				end
-
 			end
 			
 		end
@@ -131,8 +116,6 @@ def order_weight(strng)
 	#puts charArr
 	return charArr
 
-	
-
 end
 
 #main program
@@ -144,4 +127,3 @@ end
 	puts sorted
 
 #end of main
-
