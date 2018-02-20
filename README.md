@@ -1,2 +1,2 @@
 # ruby-programming
-Solutions to coding problems using Ruby.
+Solutions to Various Codewars Challenges
