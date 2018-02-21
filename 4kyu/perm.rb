@@ -6,6 +6,8 @@ recursive solution to this kata: https://www.codewars.com/kata/permutations
 
 def getPerms(str, char1, char2, vals)
 
+	str = str.split""
+
 	if char1 == str.length or char2 < 0
 		return vals.uniq
 	end
@@ -22,16 +24,3 @@ def getPerms(str, char1, char2, vals)
 	#swap character on both sides of array
 	
 end
-
-#beginning of main
-
-	puts "enter string"
-	ans = gets.chomp
-	vals = []
-	  
-	if ans != nil
-		ans = ans.split""
-		print getPerms(ans, 0, ans.length - 1, vals)
-	end
-
-#end of main
