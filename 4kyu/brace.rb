@@ -1,8 +1,6 @@
 =begin
-
 	solution to this kata:
 	https://www.codewars.com/kata/valid-braces
-
 =end
 
 $PARENTH = {"(" => 1, "[" => 2, "{" => 3, ")" => -1, "]" => -2, "}" => -3}
@@ -58,10 +56,16 @@ end
 
 #main
 
-	ans = gets.chomp
-	ans = ans.split""
+  ans = gets.chomp
+  
+  if ans == nil
+    puts "false"
+    return false
+
+  else
+    ans = ans.split""
 	puts validBraces(ans)
+  end
 	
 #end of main
-
 
