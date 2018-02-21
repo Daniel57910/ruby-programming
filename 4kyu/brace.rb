@@ -10,7 +10,6 @@ $PARENTH = {"(" => 1, "[" => 2, "{" => 3, ")" => -1, "]" => -2, "}" => -3}
 def isCorrect(vals)
 
 	if vals.length % 2 != 0
-		puts "odd number so false"
 		return false
 	end
 
@@ -19,26 +18,26 @@ def isCorrect(vals)
 
 	while vals.length != 0
 
-		puts "I is #{i}. J is #{j}. keys are #{vals[i]} and #{vals[j]}"
+		#both brackets open
 		if vals[i] > 0 and vals[j] > 0
-			puts "both open"
 			i+=1
 			j+=1
 
+		#open and closed bracked don't match
 		elsif vals[j] == nil or vals[i] + vals[j] != 0
-			puts "failure. vals are #{vals}"
 			return false
+
 		#successfully closed brackets
 		elsif vals[i] + vals[j] == 0
 			vals.delete_at(i)
 			vals.delete_at(i)
-			puts "vals are #{vals}"
+			#puts "vals are #{vals}"
 			isCorrect(vals)	 
 		end
 
 	end
 
-	puts "completed and returned true"
+	#puts "completed and returned true"
 	return true
 
 end
@@ -52,19 +51,16 @@ def validBraces(braces)
 		vals << var 
 	}
 
-	print "\n" + braces.to_s
-	print vals.to_s + "\n"
-
-	isCorrect(vals)
+	return isCorrect(vals)
 
 end
 
 
 #main
 
-	puts "enter a string"
-	ans = gets.chomp.split""
-	validBraces(ans)
+	ans = gets.chomp
+	ans = ans.split""
+	puts validBraces(ans)
 	
 #end of main
 
