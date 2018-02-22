@@ -3,6 +3,7 @@
 	https://www.codewars.com/kata/valid-braces
 =end
 
+#assigns every option numerical value
 $PARENTH = {"(" => 1, "[" => 2, "{" => 3, ")" => -1, "]" => -2, "}" => -3}
 
 def isCorrect(vals)
@@ -20,7 +21,7 @@ def isCorrect(vals)
 		#both brackets open
 		
 		#last bracket open
-    	if j == vals.length-1 and vals[i] > 0 and vals[j] > 0
+    	if j == vals.length-1 and vals[j] > 0
     		#puts "last bracket open. exit loop"
       		return false
 
@@ -68,7 +69,6 @@ def validBraces(braces)
 	return isCorrect(vals)
 
 end
-
 
 #main
 
