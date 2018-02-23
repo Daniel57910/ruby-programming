@@ -1,5 +1,5 @@
 
-$MAX = 20
+$MAX = 5
 $DONE = "!"
 
 def printArray(array)
@@ -14,10 +14,6 @@ end
 
 
 def snail(array)
-
-	if array == nil
-		return array
-	end
 
 	len = array.length
 	final = []
@@ -37,7 +33,7 @@ def snail(array)
 		if check % 4 == 0
 			#if all 4 sides traversed move inward by 1 row
 			check = 0
-			count+=1
+			count +=1
 		end
 
 	end
@@ -45,8 +41,6 @@ def snail(array)
 	return final
 
 end
-
-
 
 #main
 

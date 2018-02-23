@@ -99,6 +99,8 @@ def validSolution(board)
 	if evaluate(board) == false or evaluate(rowBoard) == false or divBoard(board) == false
 		return false
 	end
+
+	return true
 	
 end
 #beginning of main
