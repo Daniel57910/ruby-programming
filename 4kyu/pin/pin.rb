@@ -1,3 +1,4 @@
+#program not going to work currently, need to update permutation algorithm
 
 $PIN = 
 	[ 
@@ -9,50 +10,57 @@ $PIN =
 ]
 
 
-def printPin(pin)
-
-	$PIN.each do | row |
-		print row.to_s + "\n"
-	end
-
-end
-
-
 class CrackSafe
 
 	#function for getting all relevant number for perms
 	def initialize(strings)
-		@ops = []
-		@length = strings.length
 
-		strings.each_char { | num | 
-			#identifies index of each element then adds it to array
-			num = num.to_i
-			@ops << num
+		@options = {}
+		@optsArray = []
+		current = {}
+		count = 0
+
+		strings.each_char { | num | num = num.to_i
+
+			hold = []
 
 			row = $PIN.detect { | ind | ind.include?(num)}
-			ind = [row.index(num), $PIN.index(row)]
-			rowi = ind[0]
-			col = ind[1]
+			#identifies the row of the 2d array with the number
+			indx = [row.index(num), $PIN.index(row)]
+			#identifies the column 
+			row = indx[0]
+			col = indx[1]
 
-			@ops << $PIN[col][rowi + 1]
-			@ops << $PIN[col][rowi - 1]
-			@ops << $PIN[col + 1][rowi]
-			@ops << $PIN[col - 1][rowi]
+			hold << num
+			hold << $PIN[col][row + 1]
+			hold << $PIN[col][row - 1]
+			hold << $PIN[col + 1][row]
+			hold << $PIN[col - 1][row]
+
+			@optsArray << hold
+			#holds all the possible combinations
+
+			hold.delete_if { | i | i == nil }
+
+			current = {count => hold}
+			count+=1
+			#puts "current is #{current}"
+			@options.merge!(current)
 		}
 
-		@ops = @ops.uniq.delete_if { | x | x == nil }.sort
-
+	
 	end
 
+	def getPerms
 
-	def getPerms 
-		puts "number for perms are #{@ops}. length is #{@length}"
+		@optsArray = @optsArray.join.split""
+		@optsArray = @optsArray.combination(@options.length)
+		@options.each { | key, val | print "#{key}: " + val.to_s + "\n" }
+		
+
 	end
 
 end
-
-
 
 #beginning of main
 
