@@ -28,6 +28,7 @@ class CrackSafe
 			#identifies the row of the 2d array with the number
 			indx = [row.index(num), $PIN.index(row)]
 			#identifies the column 
+
 			row = indx[0]
 			col = indx[1]
 
@@ -44,8 +45,8 @@ class CrackSafe
 
 			current = {count => hold}
 			count+=1
-			#puts "current is #{current}"
 			@options.merge!(current)
+			
 		}
 
 	
@@ -54,10 +55,31 @@ class CrackSafe
 	def getPerms
 
 		@optsArray = @optsArray.join.split""
-		@optsArray = @optsArray.combination(@options.length)
-		@options.each { | key, val | print "#{key}: " + val.to_s + "\n" }
-		
+		perms = @optsArray.combination(@options.length)
+		#every single permutation of password
+		final  = []
 
+		perms.each { | perm | 
+			if isValid(perm) == true
+				final << perm.join.to_s
+			end
+		}
+
+		final = final.uniq
+		puts "combos are: \n"
+		final.each { | array | print array.to_s + "\n" }
+
+	end
+
+	def isValid(current)
+		for i in 0..current.length-1
+			@options[i] = @options[i].to_a
+			if @options[i].include?(current[i].to_i) == false
+				return false
+			end
+		end
+
+		return true
 	end
 
 end
@@ -66,11 +88,9 @@ end
 
 	puts "enter permutation combination"
 	num = gets.chomp
-
 	perms = CrackSafe.new(num)
 	perms.getPerms
 	
 #end of main
-
 
 	
