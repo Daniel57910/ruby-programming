@@ -6,7 +6,8 @@ $PIN =
 	[nil, 1, 2, 3, nil], 
 	[nil, 4, 5, 6, nil], 
 	[nil, 7, 8, 9, nil], 
-	[nil, nil, 0, nil, nil] 
+	[nil, nil, 0, nil, nil],
+	[nil, nil, nil, nil, nil]
 ]
 
 
@@ -95,7 +96,7 @@ end
 #end of main
 
 
-#adapted for codewars
+#adapted for codewars. challenge completed
 
 =begin
 	
