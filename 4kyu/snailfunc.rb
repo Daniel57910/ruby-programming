@@ -20,6 +20,10 @@ def snail(array)
 	check = 0
 	count = 0
 
+	if array == nil
+		return array
+	end
+
 	while  final.length < (len**2)
 		for i in count..len-1
 			if array[count][i] != $DONE
