@@ -1,0 +1,21 @@
+
+http://unitconverter.io/seconds/minutes/3741
+
+require './time.rb'
+
+format_duration(60)
+[0, 1]
+
+format_duration(120)
+
+format_duration(360)
+[0, 6]
+
+format_duration(600)
+[0, 10]
+
+format_duration(3741)
+
+format_duration(19999)
+
+format_duration(7799)
