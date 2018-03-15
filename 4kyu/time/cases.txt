@@ -1,7 +1,8 @@
 
 http://unitconverter.io/seconds/minutes/3741
 
-require './time.rb'
+irb 
+require './test.rb'
 
 format_duration(60)
 [0, 1]
@@ -19,3 +20,17 @@ format_duration(3741)
 format_duration(19999)
 
 format_duration(7799)
+
+format_duration(3601)
+format_duration(0)
+
+format_duration(864120)
+format_duration(86461)
+format_duration(172800)
+format_duration(10000000)
+
+format_duration(31536000)
+one year
+
+format_duration(39989998)
+format_duration(212881000)

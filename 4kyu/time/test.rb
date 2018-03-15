@@ -1,37 +1,76 @@
 TIMES = [" second", " minute", " hour", " day", " year"]
+DAY = 24
+YEAR = 365
 
 class Convert
 
   def initialize(seconds)
+
     @seconds = seconds
     @values = []
+
   end
 
   def is_a_day
-    3.times do 
+
+    2.times do 
       @values << @seconds % 60
-      @seconds /= 60    
-      puts "values = #{@values} current = #{@seconds}"
+      @seconds /= 60   
     end
-    @values
+
+    @values << @seconds
+   
+    if @values.last >= 24
+      @values = more_than_day(DAY, @values)
+    end
+     
   end
-
-
 
   def calculate
 
     @time = []
     @values.each_index {|x| 
-      puts "x is #{x}"
       if @values[x] > 1 
         @time << @values[x].to_s.concat(TIMES[x]).concat("s")
       elsif @values[x] == 1
          @time << @values[x].to_s.concat(TIMES[x])
       end
-      puts "time is #{@time}"
     }
 
-    print @time.reverse
+    return @time.join if @time.length == 1
+
+    return parse_array
+
+  end
+
+  private
+
+  def more_than_day(count, val_array)
+
+    day_count = 0
+    hours = val_array.pop
+
+    while hours >= count
+      hours -= count
+      day_count+=1
+    end
+
+    val_array << hours << day_count
+
+    if val_array.last >= 365
+      val_array = more_than_day(YEAR, val_array)
+    end
+
+    val_array
+
+  end
+
+
+  def parse_array
+
+    @time.reverse!
+    last = @time.pop
+    @time = @time.join(", ").concat(" and ").concat(last)
 
   end
 
@@ -41,10 +80,13 @@ end
 
 def format_duration(seconds)
 
+  if seconds == 0
+    return "now"
+  end
+
   readable = Convert.new(seconds)
-  
-  values = readable.is_a_day
-  if values.length <= 3 then readable.calculate end
+  readable.is_a_day
+  readable.calculate
    
 end
 
