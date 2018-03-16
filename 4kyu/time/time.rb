@@ -1,3 +1,5 @@
+#solution to kata: https://www.codewars.com/kata/52742f58faf5485cae000b9a
+
 TIMES = [" second", " minute", " hour", " day", " year"]
 DAY = 24
 YEAR = 365
